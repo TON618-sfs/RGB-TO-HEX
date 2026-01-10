@@ -169,4 +169,4 @@ def main(page: f.Page):
     )
 
 
-f.app(port=25565, target=main, view=f.AppView.FLET_APP_WEB)
+f.app(port=25565, target=main, view=f.AppView.FLET_APP)
