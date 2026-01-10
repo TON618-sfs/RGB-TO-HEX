@@ -12,4 +12,4 @@ python C:\\"path to the directory"\main.py
 python "path to the directory"/main.py
 ```
 # or:
-download release
+Download release : ``` https://github.com/TON618-sfs/RGB-TO-HEX/releases/tag/RGB-TO-HEX ```
