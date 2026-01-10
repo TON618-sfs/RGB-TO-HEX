@@ -11,3 +11,5 @@ python C:\\"path to the directory"\main.py
 ```
 python "path to the directory"/main.py
 ```
+# or:
+download release
