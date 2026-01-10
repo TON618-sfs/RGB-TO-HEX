@@ -11,7 +11,7 @@ def splited(text, chunk_size):
 
 
 def rgba(rgb):
-    r = rgb.replace(" ", "").replace(".", ",").split(',')
+    r = rgb.replace(" ", "").split(',')
 
     c = "#"+str(hex(int(r[0])).replace('0x', '').zfill(2))+str(hex(int(r[1])).replace('0x', '').zfill(2))+str(hex(int(r[2])).replace('0x', '').zfill(2))
     if len(r) > 3:
