@@ -131,8 +131,8 @@ def main(page: f.Page):
         page.update()
 
 
-    rgbz = f.TextField(label='Enter the RGB (for example: 128, 128, 128, 1 or 128, 128, 128)', width=500, text_align=f.TextAlign.CENTER, on_change=varidate_rgb)
-    HEXa = f.TextField(label='Enter the HEX (for example: 80808080 or 808080)', width=410, text_align=f.TextAlign.CENTER, on_change=varidate_hex)
+    rgbz = f.TextField(label='Enter the RGB (for example: 128, 128, 128, 1 or 128, 128, 128)', width=500, text_align=f.TextAlign.CENTER, on_change=varidate_rgb, on_submit=rgba1)
+    HEXa = f.TextField(label='Enter the HEX (for example: 80808080 or 808080)', width=410, text_align=f.TextAlign.CENTER, on_change=varidate_hex, on_submit=hex1)
     buttonrgb = f.ElevatedButton(text='Convert RGB to HEX', on_click=rgba1, disabled=True, on_blur=clean_btn_hex_data)
     buttonhex = f.ElevatedButton(text='Convert HEX to RGB', on_click=hex1, disabled=True, on_blur=clean_btn_rgb_data)
     vyvod = f.Text('')
