@@ -1,7 +1,7 @@
 # To use, install flet
 
 ```
-pip install flet
+pip install flet==0.28.3
 ```
 # and launch main.py 
 For windows:
