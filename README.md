@@ -1,4 +1,4 @@
-# To use, install flet:
+# To use, install flet
 
 ```
 pip install flet
