@@ -3,13 +3,15 @@
 ```
 pip install flet
 ```
-# and launch main.py:
+# and launch main.py 
+For windows:
 ```
 python C:\\"path to the directory"\main.py
 ```
-# or:
+or: download and launch release : ``` https://github.com/TON618-sfs/RGB-TO-HEX/releases/tag/RGB-TO-HEX ```
+
+
+For linux or macOS:
 ```
 python "path to the directory"/main.py
 ```
-# or:
-Download release : ``` https://github.com/TON618-sfs/RGB-TO-HEX/releases/tag/RGB-TO-HEX ```
