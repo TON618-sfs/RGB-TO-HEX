@@ -21,15 +21,13 @@ def main(page: ft.Page):
             clean_btn.disabled = False
             vyvod_container.disabled = False
             hexes = hexes.replace('#', '')
-            print(hexes)
             if len(hexes) > 6:
                 o = hexes[:-2]
-                print(hexes)
                 hexes = "#"+hexes+o
             if len(hexes) <= 6:
                 hexes = "#ff"+hexes
             vyvod_container.bgcolor = hexes
-            page.open(ft.SnackBar(ft.Text('Color:'), bgcolor=f'{hexes}'))
+            page.open(ft.SnackBar(ft.Text('Color:'), bgcolor=hexes))
             page.update()
         except:
             vyvod.value = 'Error: incorrect input'
@@ -269,7 +267,7 @@ def main(page: ft.Page):
         margin=10,
         padding=10,
         alignment=ft.alignment.center,
-        bgcolor="#4D245E",
+        bgcolor="#804D245E",
         width=550,
         height=350,
         border_radius=10
@@ -289,7 +287,7 @@ def main(page: ft.Page):
         margin=10,
         padding=10,
         alignment=ft.alignment.center,
-        bgcolor='#4D245E',
+        bgcolor='#804D245E',
         width=550,
         height=350,
         border_radius=10
@@ -308,7 +306,7 @@ def main(page: ft.Page):
         margin=10,
         padding=10,
         alignment=ft.alignment.center,
-        bgcolor="#2E0C3C",
+        bgcolor="#802E0C3C",
         border_radius=10
     )
 
