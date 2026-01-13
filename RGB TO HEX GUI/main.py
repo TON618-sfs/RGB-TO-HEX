@@ -1,11 +1,13 @@
-import flet as f
+import flet as ft
 import rgb_to_hex
 
-def main(page: f.Page):
+clr = ''
+
+def main(page: ft.Page):
     #настройка окна
     page.title = "RGB TO HEX"
     page.theme_mode = 'dark' 
-    page.vertical_alignment = f.MainAxisAlignment.CENTER
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.window.width = 550
     page.window.height = 700
 
@@ -21,7 +23,9 @@ def main(page: f.Page):
             copy_btn_hex.disabled = False
             if len(hexes) > 7:
                 hexes = hexes[:-2]
-            page.open(f.SnackBar(f.Text('Color:'), bgcolor=f'{hexes}'))
+                global clr
+                clr = hexes
+            page.open(ft.SnackBar(ft.Text('Color:'), bgcolor=f'{hexes}'))
             page.update()
         except:
             vyvod.value = 'Error: incorrect input'
@@ -29,7 +33,9 @@ def main(page: f.Page):
             buttonrgb.disabled = True
             clean_btn.disabled = False
             copy_btn_hex.disabled = True
-            page.open(f.SnackBar(f.Text('Error: incorrect input'), bgcolor="#a11c1c"))
+            page.open(ft.SnackBar(ft.Text('Error: incorrect input'), bgcolor="#a11c1c"))
+            global clr
+            clr = ''
             page.update()
 
     #функция для перевода HEX в RGB
@@ -45,7 +51,9 @@ def main(page: f.Page):
             rgbzz = str('#'+str(rgbzz))
             if len(rgbzz) > 7:
                 rgbzz = rgbzz[:-2]
-            page.open(f.SnackBar(f.Text('Color:'), bgcolor=rgbzz))
+                global clr
+                clr = rgbzz
+            page.open(ft.SnackBar(ft.Text('Color:'), bgcolor=rgbzz))
             page.update()
         except:
             vyvod2.value = 'Error: incorrect input'
@@ -53,7 +61,9 @@ def main(page: f.Page):
             buttonhex.disabled = True
             clean_btn.disabled = False
             copy_btn_rgb.disabled = True
-            page.open(f.SnackBar(f.Text('Error: incorrect input'), bgcolor="#a11c1c"))
+            page.open(ft.SnackBar(ft.Text('Error: incorrect input'), bgcolor="#a11c1c"))
+            global clr
+            clr = ''
             page.update()
 
     #смена темы
@@ -86,7 +96,7 @@ def main(page: f.Page):
         clean_btn_rgb.disabled = True
         copy_btn_hex.disabled = True
         copy_btn_rgb.disabled = True
-        page.open(f.SnackBar(f.Text('All results was successfully cleared'), bgcolor='#4ab818'))
+        page.open(ft.SnackBar(ft.Text('All results was successfully cleared'), bgcolor='#4ab818'))
         page.update()
     
     #отчиска результата hex
@@ -94,7 +104,7 @@ def main(page: f.Page):
         vyvod.value = ''
         clean_btn_hex.disabled = True
         copy_btn_hex.disabled = True
-        page.open(f.SnackBar(f.Text('The result was successfully cleared'), bgcolor='#4ab818'))
+        page.open(ft.SnackBar(ft.Text('The result was successfully cleared'), bgcolor='#4ab818'))
         page.update()
 
     #проверка clean HEX result
@@ -110,7 +120,7 @@ def main(page: f.Page):
         vyvod2.value = ''
         clean_btn_rgb.disabled = True
         copy_btn_rgb.disabled = True
-        page.open(f.SnackBar(f.Text('The result was successfully cleared'), bgcolor="#4ab818"))
+        page.open(ft.SnackBar(ft.Text('The result was successfully cleared'), bgcolor="#4ab818"))
         page.update()
 
     #проверка clean RGB result
@@ -133,80 +143,82 @@ def main(page: f.Page):
     def copy_result_hex(e):
         b = vyvod.value.replace("HEX code: ", "")
         page.set_clipboard(str(b))
-        page.open(f.SnackBar(f.Text('Result is copied')))
+        page.open(ft.SnackBar(ft.Text('Result is copied')))
         page.update()
 
     #копирование rgb
     def copy_result_rgb(e):
         z = vyvod2.value.replace("RGB code: ", "")
         page.set_clipboard(str(z))
-        page.open(f.SnackBar(f.Text('Result is copied')))
+        page.open(ft.SnackBar(ft.Text('Result is copied')))
         page.update()
     
 
     #поле ввода rgb
-    rgbz = f.TextField(label='Enter the RGB (for example: 128, 128, 128, 1 or 128, 128, 128)', width=500, text_align=f.TextAlign.CENTER, on_change=varidate_rgb, on_submit=rgba1)
+    rgbz = ft.TextField(label='Enter the RGB (for example: 128, 128, 128, 1 or 128, 128, 128)', width=500, text_align=ft.TextAlign.CENTER, on_change=varidate_rgb, on_submit=rgba1)
 
     #поле ввода hex
-    HEXa = f.TextField(label='Enter the HEX (for example: 80808080 or 808080)', width=410, text_align=f.TextAlign.CENTER, on_change=varidate_hex, on_submit=hex1)
+    HEXa = ft.TextField(label='Enter the HEX (for example: 80808080 or 808080)', width=410, text_align=ft.TextAlign.CENTER, on_change=varidate_hex, on_submit=hex1)
 
     #кнопка конвертирования в hex
-    buttonrgb = f.ElevatedButton(text='Convert RGB to HEX', on_click=rgba1, disabled=True, on_blur=clean_btn_hex_data)
+    buttonrgb = ft.ElevatedButton(text='Convert RGB to HEX', on_click=rgba1, disabled=True, on_blur=clean_btn_hex_data)
 
     #кнопка конвертирования в rgb
-    buttonhex = f.ElevatedButton(text='Convert HEX to RGB', on_click=hex1, disabled=True, on_blur=clean_btn_rgb_data)
+    buttonhex = ft.ElevatedButton(text='Convert HEX to RGB', on_click=hex1, disabled=True, on_blur=clean_btn_rgb_data)
     
     #вывод hex
-    vyvod = f.Text('')
+    vyvod = ft.Text('')
 
     #вывод rgb
-    vyvod2 = f.Text('')
+    vyvod2 = ft.Text('')
 
     #кнопка отчистки всех результатов
-    clean_btn = f.OutlinedButton(text='Clean all results', on_click=clean, disabled=True)
+    clean_btn = ft.OutlinedButton(text='Clean all results', on_click=clean, disabled=True)
 
     #отчистка результата hex
-    clean_btn_hex = f.OutlinedButton(text='Clean result', style=f.ButtonStyle(text_style=f.TextStyle(size=10)), height=20, width=80, on_click=cleanhex, on_blur=clean_btn_data, disabled=True)
+    clean_btn_hex = ft.OutlinedButton(text='Clean result', style=ft.ButtonStyle(text_style=ft.TextStyle(size=10)), height=20, width=80, on_click=cleanhex, on_blur=clean_btn_data, disabled=True)
 
     #отчистка результата rgb
-    clean_btn_rgb = f.OutlinedButton(text='Clean result', style=f.ButtonStyle(text_style=f.TextStyle(size=10)), height=20, width=80, on_click=cleanrgb, on_blur=clean_btn_data, disabled=True)
+    clean_btn_rgb = ft.OutlinedButton(text='Clean result', style=ft.ButtonStyle(text_style=ft.TextStyle(size=10)), height=20, width=80, on_click=cleanrgb, on_blur=clean_btn_data, disabled=True)
 
     #копирование результата hex
-    copy_btn_hex = f.IconButton(icon=f.Icons.COPY, tooltip='Copy result', on_click=copy_result_hex, disabled=True)
+    copy_btn_hex = ft.IconButton(icon=ft.Icons.COPY, tooltip='Copy result', on_click=copy_result_hex, disabled=True)
 
     #копирование результата rgb
-    copy_btn_rgb = f.IconButton(icon=f.Icons.COPY, tooltip='Copy result', on_click=copy_result_rgb, disabled=True)
+    copy_btn_rgb = ft.IconButton(icon=ft.Icons.COPY, tooltip='Copy result', on_click=copy_result_rgb, disabled=True)
     
 
     #отрисовка приложения    
     page.add(
         #кнопка смены темы
-        f.Row([f.IconButton(f.Icons.SUNNY, on_click=theme_switch)], alignment=f.MainAxisAlignment.END),
+        ft.Row([ft.IconButton(ft.Icons.SUNNY, on_click=theme_switch)], alignment=ft.MainAxisAlignment.END),
 
         
         #перевод в hex
-        f.Row([f.Text('RGB to HEX', color="#7994eb")], alignment=f.MainAxisAlignment.CENTER),
-        f.Row([f.Text('Enter the RGB:')], alignment=f.MainAxisAlignment.CENTER),
-        f.Row([rgbz], alignment=f.MainAxisAlignment.CENTER),
-        f.Row([copy_btn_hex, buttonrgb, clean_btn_hex], alignment=f.MainAxisAlignment.CENTER),
-        f.Row([vyvod], alignment=f.MainAxisAlignment.CENTER),
+        ft.Row([ft.Text('RGB to HEX', color="#7994eb")], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([ft.Text('Enter the RGB:')], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([rgbz], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([copy_btn_hex, buttonrgb, clean_btn_hex], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([vyvod], alignment=ft.MainAxisAlignment.CENTER),
 
-        f.Row([],alignment=f.MainAxisAlignment.CENTER),
-        f.Row([],alignment=f.MainAxisAlignment.CENTER),
-        f.Row([],alignment=f.MainAxisAlignment.CENTER),
+        ft.Row([],alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([],alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([],alignment=ft.MainAxisAlignment.CENTER),
 
         #перевод в rgb
-        f.Row([f.Text('HEX to RGB', color="#7994eb")], alignment=f.MainAxisAlignment.CENTER),
-        f.Row([f.Text('Enter the HEX:')], alignment=f.MainAxisAlignment.CENTER),
-        f.Row([HEXa], alignment=f.MainAxisAlignment.CENTER),
-        f.Row([copy_btn_rgb, buttonhex, clean_btn_rgb], alignment=f.MainAxisAlignment.CENTER),
-        f.Row([vyvod2], alignment=f.MainAxisAlignment.CENTER),
+        ft.Row([ft.Text('HEX to RGB', color="#7994eb")], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([ft.Text('Enter the HEX:')], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([HEXa], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([copy_btn_rgb, buttonhex, clean_btn_rgb], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([vyvod2], alignment=ft.MainAxisAlignment.CENTER),
 
-        f.Row([],alignment=f.MainAxisAlignment.CENTER),
+        ft.Row([],alignment=ft.MainAxisAlignment.CENTER),
 
         #кнопка отчистки всех результатов
-        f.Row([clean_btn], alignment=f.MainAxisAlignment.END)
+        ft.Row([clean_btn], alignment=ft.MainAxisAlignment.END)
+
+        
     )
 
 #старт программы
-f.app(port=25565, target=main, view=f.AppView.FLET_APP)
+ft.app(port=25565, target=main, view=ft.AppView.FLET_APP)
