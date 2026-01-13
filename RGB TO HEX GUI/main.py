@@ -142,6 +142,7 @@ def main(page: f.Page):
         page.set_clipboard(str(z))
         page.open(f.SnackBar(f.Text('Result is copied')))
         page.update()
+    
 
     #поле ввода rgb
     rgbz = f.TextField(label='Enter the RGB (for example: 128, 128, 128, 1 or 128, 128, 128)', width=500, text_align=f.TextAlign.CENTER, on_change=varidate_rgb, on_submit=rgba1)
@@ -208,4 +209,4 @@ def main(page: f.Page):
     )
 
 #старт программы
-f.app(port=25565, target=main, view=f.AppView.WEB_BROWSER)
+f.app(port=25565, target=main, view=f.AppView.FLET_APP)
