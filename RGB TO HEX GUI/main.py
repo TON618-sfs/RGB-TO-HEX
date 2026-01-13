@@ -318,4 +318,4 @@ def main(page: ft.Page):
     )
 
 #старт программы
-ft.app(port=25565, target=main, view=ft.AppView.FLET_APP_WEB)
+ft.app(port=25565, target=main, view=ft.AppView.FLET_APP)
