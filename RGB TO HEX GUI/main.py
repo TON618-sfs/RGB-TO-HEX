@@ -8,7 +8,7 @@ def main(page: f.Page):
     page.window.width = 550
     page.window.height = 700
 
-
+    #функция для перевода RGB to HEX
     def rgba1(e):
         try:
             rgbzz = rgbz.value
@@ -31,6 +31,7 @@ def main(page: f.Page):
             page.open(f.SnackBar(f.Text('Error: incorrect input'), bgcolor="#a11c1c"))
             page.update()
 
+    #функция для перевода HEX to RGB
     def hex1(e):
         try:
             rgbzz = HEXa.value.replace('#', '')
