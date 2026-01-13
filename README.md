@@ -1,9 +1,17 @@
-# To use, install flet
+# To use, install python
+Windows: ```https://www.python.org/downloads/windows/```
+macOS: ```https://www.python.org/downloads/macos/```
 
+Linux
+- Arch linux: ```sudo pacman -S python```
+
+- Debian/Ubuntu: ```sudo apt install python3```
+
+# Install flet
 ```
 pip install flet==0.28.3
 ```
-# and launch main.py 
+# Launch main.py 
 For windows:
 ```
 python C:\\"path to the directory"\main.py
