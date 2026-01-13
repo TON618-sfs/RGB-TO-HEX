@@ -6,6 +6,7 @@ def main(page: ft.Page):
     page.title = "RGB TO HEX"
     page.theme_mode = 'dark' 
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.horizontal_alignment = ft.MainAxisAlignment.CENTER
     page.window.width = 625
     page.window.height = 700
     page.scroll = ft.ScrollMode.AUTO
@@ -298,8 +299,8 @@ def main(page: ft.Page):
         content=ft.Column(
             [
                 ft.Row([theme_btn], alignment=ft.MainAxisAlignment.END),
-                RGB_to_HEX,
-                HEX_to_RGB,
+                ft.Row([RGB_to_HEX], alignment=ft.MainAxisAlignment.CENTER),
+                ft.Row([HEX_to_RGB], alignment=ft.MainAxisAlignment.CENTER),
                 ft.Row([clean_btn], alignment=ft.MainAxisAlignment.END)
             ], alignment=ft.MainAxisAlignment.CENTER
         ),
@@ -317,4 +318,4 @@ def main(page: ft.Page):
     )
 
 #старт программы
-ft.app(port=25565, target=main, view=ft.AppView.FLET_APP)
+ft.app(port=25565, target=main, view=ft.AppView.FLET_APP_WEB)
