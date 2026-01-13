@@ -1,6 +1,5 @@
 import flet as ft
 import rgb_to_hex
-import time as tm
 
 def main(page: ft.Page):
     #настройка окна
@@ -72,13 +71,11 @@ def main(page: ft.Page):
     #смена темы
     def theme_switch(e):
         if page.theme_mode == 'dark':
-            e.control.icon = ft.Icons.DARK_MODE
-            tm.sleep(0.1)
+            theme_btn.icon = ft.Icons.DARK_MODE
             page.update()
             page.theme_mode = 'light'
         else:
-            e.control.icon = ft.Icons.LIGHT_MODE
-            tm.sleep(0.1)
+            theme_btn.icon = ft.Icons.LIGHT_MODE
             page.update()
             page.theme_mode ='dark'
         page.update()
@@ -230,7 +227,7 @@ def main(page: ft.Page):
         disabled=True
     )
 
-
+    #основной текст первого контейнера
     main_text_rgb_to_hex = ft.Container(
         content=ft.Column(
             [
@@ -244,6 +241,7 @@ def main(page: ft.Page):
         border_radius=10
     )
 
+    #основной текст второго контейнера
     main_text_hex_to_rgb = ft.Container(
         content=ft.Column(
             [
@@ -257,7 +255,7 @@ def main(page: ft.Page):
         border_radius=10
     )
 
-
+    #первый контейнер
     RGB_to_HEX = ft.Container(
         content=ft.Column(
             [
@@ -277,6 +275,7 @@ def main(page: ft.Page):
         border_radius=10
     )
 
+    #второй контейнер
     HEX_to_RGB = ft.Container(
         content=ft.Column(
             [
@@ -295,21 +294,28 @@ def main(page: ft.Page):
         height=350,
         border_radius=10
     )
-    
+
+    #фон и основное поле
+    MAIN_RGB_TO_HEX = ft.Container(
+        content=ft.Column(
+            [
+                ft.Row([theme_btn], alignment=ft.MainAxisAlignment.END),
+                RGB_to_HEX,
+                HEX_to_RGB,
+                ft.Row([clean_btn], alignment=ft.MainAxisAlignment.END)
+            ], alignment=ft.MainAxisAlignment.CENTER
+        ),
+        margin=10,
+        padding=10,
+        alignment=ft.alignment.center,
+        bgcolor="#2E0C3C",
+        border_radius=10
+    )
 
     #отрисовка приложения    
     page.add(
-        #кнопка смены темы
-        ft.Row([ft.IconButton(ft.Icons.SUNNY, on_click=theme_switch)], alignment=ft.MainAxisAlignment.END),
-
-        #основные поля
-        RGB_to_HEX,
-        HEX_to_RGB,
-
-        #кнопка отчистки всех результатов
-        ft.Row([clean_btn], alignment=ft.MainAxisAlignment.END)
-        
-        
+        #основное поле
+        MAIN_RGB_TO_HEX
     )
 
 #старт программы
