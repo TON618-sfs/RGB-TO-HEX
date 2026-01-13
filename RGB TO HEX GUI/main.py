@@ -2,13 +2,14 @@ import flet as f
 import rgb_to_hex
 
 def main(page: f.Page):
+    #настройка окна
     page.title = "RGB TO HEX"
     page.theme_mode = 'dark' 
     page.vertical_alignment = f.MainAxisAlignment.CENTER
     page.window.width = 550
     page.window.height = 700
 
-    #функция для перевода RGB to HEX
+    #функция для перевода RGB в HEX
     def rgba1(e):
         try:
             rgbzz = rgbz.value
@@ -31,7 +32,7 @@ def main(page: f.Page):
             page.open(f.SnackBar(f.Text('Error: incorrect input'), bgcolor="#a11c1c"))
             page.update()
 
-    #функция для перевода HEX to RGB
+    #функция для перевода HEX в RGB
     def hex1(e):
         try:
             rgbzz = HEXa.value.replace('#', '')
@@ -55,10 +56,12 @@ def main(page: f.Page):
             page.open(f.SnackBar(f.Text('Error: incorrect input'), bgcolor="#a11c1c"))
             page.update()
 
+    #смена темы
     def theme_switch(e):
         page.theme_mode = 'light' if page.theme_mode == 'dark' else 'dark'
         page.update()
 
+    #проверка кнопки перевода в rgb
     def varidate_hex(e):
         if all([HEXa.value]):
             buttonhex.disabled = False
@@ -66,6 +69,7 @@ def main(page: f.Page):
             buttonhex.disabled = True
         page.update()
     
+    #проверка кнопки перевода в hex
     def varidate_rgb(e):
         if all([rgbz.value]):
             buttonrgb.disabled = False
@@ -73,6 +77,7 @@ def main(page: f.Page):
             buttonrgb.disabled = True
         page.update()
 
+    #отчиска результатов
     def clean(e):
         vyvod.value = ''
         vyvod2.value = ''
@@ -84,6 +89,7 @@ def main(page: f.Page):
         page.open(f.SnackBar(f.Text('All results was successfully cleared'), bgcolor='#4ab818'))
         page.update()
     
+    #отчиска результата hex
     def cleanhex(e):
         vyvod.value = ''
         clean_btn_hex.disabled = True
@@ -91,6 +97,7 @@ def main(page: f.Page):
         page.open(f.SnackBar(f.Text('The result was successfully cleared'), bgcolor='#4ab818'))
         page.update()
 
+    #проверка clean HEX result
     def clean_btn_hex_data(e):
         if all([vyvod.value]):
             clean_btn_hex.disabled = False
@@ -98,6 +105,7 @@ def main(page: f.Page):
             clean_btn_hex.disabled = True
         page.update()
 
+    #отчистка результата rgb
     def cleanrgb(e):
         vyvod2.value = ''
         clean_btn_rgb.disabled = True
@@ -105,6 +113,7 @@ def main(page: f.Page):
         page.open(f.SnackBar(f.Text('The result was successfully cleared'), bgcolor="#4ab818"))
         page.update()
 
+    #проверка clean RGB result
     def clean_btn_rgb_data(e):
         if all([vyvod2.value]):
             clean_btn_rgb.disabled = False
@@ -112,6 +121,7 @@ def main(page: f.Page):
             clean_btn_rgb.disabled = True
         page.update()
 
+    #проверка clean all result
     def clean_btn_data(e):
         if clean_btn_hex.disabled and clean_btn_rgb.disabled == True:
             clean_btn.disabled = True
@@ -119,35 +129,61 @@ def main(page: f.Page):
             clean_btn.disabled = False
         page.update()
 
+    #копирование hex 
     def copy_result_hex(e):
         b = vyvod.value.replace("HEX code: ", "")
         page.set_clipboard(str(b))
         page.open(f.SnackBar(f.Text('Result is copied')))
         page.update()
 
+    #копирование rgb
     def copy_result_rgb(e):
         z = vyvod2.value.replace("RGB code: ", "")
         page.set_clipboard(str(z))
         page.open(f.SnackBar(f.Text('Result is copied')))
         page.update()
 
-
+    #поле ввода rgb
     rgbz = f.TextField(label='Enter the RGB (for example: 128, 128, 128, 1 or 128, 128, 128)', width=500, text_align=f.TextAlign.CENTER, on_change=varidate_rgb, on_submit=rgba1)
+
+    #поле ввода hex
     HEXa = f.TextField(label='Enter the HEX (for example: 80808080 or 808080)', width=410, text_align=f.TextAlign.CENTER, on_change=varidate_hex, on_submit=hex1)
+
+    #кнопка конвертирования в hex
     buttonrgb = f.ElevatedButton(text='Convert RGB to HEX', on_click=rgba1, disabled=True, on_blur=clean_btn_hex_data)
+
+    #кнопка конвертирования в rgb
     buttonhex = f.ElevatedButton(text='Convert HEX to RGB', on_click=hex1, disabled=True, on_blur=clean_btn_rgb_data)
+    
+    #вывод hex
     vyvod = f.Text('')
+
+    #вывод rgb
     vyvod2 = f.Text('')
+
+    #кнопка отчистки всех результатов
     clean_btn = f.OutlinedButton(text='Clean all results', on_click=clean, disabled=True)
+
+    #отчистка результата hex
     clean_btn_hex = f.OutlinedButton(text='Clean result', style=f.ButtonStyle(text_style=f.TextStyle(size=10)), height=20, width=80, on_click=cleanhex, on_blur=clean_btn_data, disabled=True)
+
+    #отчистка результата rgb
     clean_btn_rgb = f.OutlinedButton(text='Clean result', style=f.ButtonStyle(text_style=f.TextStyle(size=10)), height=20, width=80, on_click=cleanrgb, on_blur=clean_btn_data, disabled=True)
+
+    #копирование результата hex
     copy_btn_hex = f.IconButton(icon=f.Icons.COPY, tooltip='Copy result', on_click=copy_result_hex, disabled=True)
+
+    #копирование результата rgb
     copy_btn_rgb = f.IconButton(icon=f.Icons.COPY, tooltip='Copy result', on_click=copy_result_rgb, disabled=True)
     
 
-    
+    #отрисовка приложения    
     page.add(
+        #кнопка смены темы
         f.Row([f.IconButton(f.Icons.SUNNY, on_click=theme_switch)], alignment=f.MainAxisAlignment.END),
+
+        
+        #перевод в hex
         f.Row([f.Text('RGB to HEX', color="#7994eb")], alignment=f.MainAxisAlignment.CENTER),
         f.Row([f.Text('Enter the RGB:')], alignment=f.MainAxisAlignment.CENTER),
         f.Row([rgbz], alignment=f.MainAxisAlignment.CENTER),
@@ -158,6 +194,7 @@ def main(page: f.Page):
         f.Row([],alignment=f.MainAxisAlignment.CENTER),
         f.Row([],alignment=f.MainAxisAlignment.CENTER),
 
+        #перевод в rgb
         f.Row([f.Text('HEX to RGB', color="#7994eb")], alignment=f.MainAxisAlignment.CENTER),
         f.Row([f.Text('Enter the HEX:')], alignment=f.MainAxisAlignment.CENTER),
         f.Row([HEXa], alignment=f.MainAxisAlignment.CENTER),
@@ -166,8 +203,9 @@ def main(page: f.Page):
 
         f.Row([],alignment=f.MainAxisAlignment.CENTER),
 
+        #кнопка отчистки всех результатов
         f.Row([clean_btn], alignment=f.MainAxisAlignment.END)
     )
 
-
+#старт программы
 f.app(port=25565, target=main, view=f.AppView.WEB_BROWSER)
