@@ -9,6 +9,8 @@ def main(page: ft.Page):
     page.horizontal_alignment = ft.MainAxisAlignment.CENTER
     page.window.width = 625
     page.window.height = 700
+    page.window.min_height = 625
+    page.window.min_width = 700
     page.scroll = ft.ScrollMode.AUTO
 
     #функция для перевода RGB в HEX
