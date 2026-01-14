@@ -73,10 +73,20 @@ def main(page: ft.Page):
     def theme_switch(e):
         if page.theme_mode == 'dark':
             theme_btn.icon = ft.Icons.DARK_MODE
+            RGB_to_HEX.bgcolor = "#80811EAC"
+            HEX_to_RGB.bgcolor = "#80811EAC"
+            MAIN_RGB_TO_HEX.bgcolor = "#80760DA0"
+            buttonrgb.bgcolor= {ft.ControlState.DISABLED: "#80682486", ft.ControlState.DEFAULT: "#7F22A7"}
+            buttonhex.bgcolor={ft.ControlState.DISABLED: '#80682486', ft.ControlState.DEFAULT: '#7F22A'}
             page.update()
             page.theme_mode = 'light'
         else:
             theme_btn.icon = ft.Icons.LIGHT_MODE
+            RGB_to_HEX.bgcolor = "#804D245E"
+            HEX_to_RGB.bgcolor = "#804D245E"
+            MAIN_RGB_TO_HEX.bgcolor = "#802E0C3C"
+            buttonhex.bgcolor={ft.ControlState.DISABLED: '#805f3b6f', ft.ControlState.DEFAULT: '#5f3b6f'}
+            buttonrgb.bgcolor={ft.ControlState.DISABLED: '#805f3b6f', ft.ControlState.DEFAULT: '#5f3b6f'}
             page.update()
             page.theme_mode ='dark'
         page.update()
@@ -290,7 +300,7 @@ def main(page: ft.Page):
         margin=10,
         padding=10,
         alignment=ft.alignment.center,
-        bgcolor='#804D245E',
+        bgcolor="#804D245E",
         width=550,
         height=350,
         border_radius=10
