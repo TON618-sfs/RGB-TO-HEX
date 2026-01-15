@@ -16,7 +16,7 @@ For windows:
 ```
 python C:\\"path to the directory"\main.py
 ```
-or: download and launch release : ``` https://github.com/TON618-sfs/RGB-TO-HEX/releases/tag/RGB-TO-HEX ```
+or: download and launch release : ``` https://github.com/TON618-sfs/RGB-TO-HEX/releases/ ```
 
 
 For linux or macOS:
