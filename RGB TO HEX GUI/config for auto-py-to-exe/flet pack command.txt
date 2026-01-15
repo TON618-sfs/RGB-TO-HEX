@@ -1,0 +1,1 @@
+flet pack -i "C:\Users\filem\Desktop\RGB-TO-HEX\RGB TO HEX GUI\icone.ico" -n "RGB TO HEX" --product-name "RGB TO HEX" --file-description "This program is designed to convert RGB code to HEX and vice versa." --product-version 2 --file-version 2.0.1.0 --company-name "TON618-sfs" --copyright "TON618-sfs" "c:\\Users\filem\Desktop\RGB-TO-HEX\RGB TO HEX GUI\main.py"
