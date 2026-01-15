@@ -170,7 +170,7 @@ def main(page: ft.Page):
     #проверка clean all result
     def clean_btn_data(e):
         #проверяем
-        if clean_btn_hex.disabled or clean_btn_rgb.disabled == True:
+        if clean_btn_hex.disabled and clean_btn_rgb.disabled == True:
             #активируем
             clean_btn.disabled = True
         else:
@@ -348,4 +348,5 @@ def main(page: ft.Page):
 ft.app(port=25565,      #какой порт используем, если это web прриложение или сайт
        target=main,     #какую функцию исполняем
        view=ft.AppView.FLET_APP     #как отбражаем приложение 
+
     )
