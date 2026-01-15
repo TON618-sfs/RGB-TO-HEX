@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['c:\\Users\\filem\\Desktop\\RGB-TO-HEX\\RGB TO HEX GUI\\main.py'],
+    ['c:\\\\Users\\filem\\Desktop\\RGB-TO-HEX\\RGB TO HEX GUI\\main.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -35,6 +35,6 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    version='C:\\Users\\filem\\AppData\\Local\\Temp\\3e1d08b4-3202-4ec7-9e76-fd09e54f6f2d',
+    version='C:\\Users\\filem\\AppData\\Local\\Temp\\bb23a949-32b0-41dd-9362-6b09946b4034',
     icon=['C:\\Users\\filem\\Desktop\\RGB-TO-HEX\\RGB TO HEX GUI\\icone.ico'],
 )
