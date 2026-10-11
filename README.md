@@ -32,8 +32,8 @@ You need Python 3 (the project was developed with Python 3.13).
 **Get the code and start the app**
 
 ```bash
-git clone https://github.com/TON618-sfs/RGB-to-HEX.git
-cd RGB-to-HEX
+git clone https://github.com/TON618-sfs/RGB-TO-HEX.git
+cd RGB-TO-HEX
 
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
