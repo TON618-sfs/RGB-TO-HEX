@@ -40,7 +40,7 @@ jobs:
           APP_DIR: "RGB TO HEX GUI"
         run: |
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
-          flet build web "$APP_DIR" --yes --verbose \
+          flet build web "$APP_DIR" --verbose \
             --base-url "$REPO_NAME" \
             --route-url-strategy hash \
             --output "$GITHUB_WORKSPACE/web-out"
